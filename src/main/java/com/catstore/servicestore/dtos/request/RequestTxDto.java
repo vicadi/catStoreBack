@@ -1,7 +1,5 @@
 package com.catstore.servicestore.dtos.request;
 
-import javax.validation.Valid;
-
 public class RequestTxDto {
 
 	private String language;
@@ -10,7 +8,6 @@ public class RequestTxDto {
 
 	private MerchantDto merchant;
 
-	@Valid
 	private TransactionDto transaction;
 
 	private Boolean test;
