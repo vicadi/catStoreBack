@@ -1,22 +1,31 @@
 package com.catstore.servicestore.dtos.request;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+
+import com.sun.istack.NotNull;
+
 public class TransactionDto {
 
+	@Valid
 	private OrderDto order;
 
+	@Valid
 	private PayerDto payer;
 
+	@Valid
 	private CreditCardDto creditCard;
 
+	@Valid
 	private ExtraParametersDto extraParameters;
 
 	private String type;
 
+	@NotNull
+	@NotEmpty
 	private String paymentMethod;
 
 	private String paymentCountry;
-
-	private String parentTransactionId;
 
 	/**
 	 * @return the order
@@ -67,13 +76,6 @@ public class TransactionDto {
 		return paymentCountry;
 	}
 
-	/**
-	 * @return the parentTransactionId
-	 */
-	public String getParentTransactionId() {
-		return parentTransactionId;
-	}
-
 	public static class Builder {
 		private OrderDto order;
 		private PayerDto payer;
@@ -82,7 +84,6 @@ public class TransactionDto {
 		private String type;
 		private String paymentMethod;
 		private String paymentCountry;
-		private String parentTransactionId;
 
 		public Builder order(OrderDto order) {
 			this.order = order;
@@ -119,11 +120,6 @@ public class TransactionDto {
 			return this;
 		}
 
-		public Builder parentTransactionId(String parentTransactionId) {
-			this.parentTransactionId = parentTransactionId;
-			return this;
-		}
-
 		public TransactionDto build() {
 			TransactionDto transactionDto = new TransactionDto();
 			transactionDto.order = order;
@@ -133,7 +129,6 @@ public class TransactionDto {
 			transactionDto.type = type;
 			transactionDto.paymentMethod = paymentMethod;
 			transactionDto.paymentCountry = paymentCountry;
-			transactionDto.parentTransactionId = parentTransactionId;
 			return transactionDto;
 		}
 	}

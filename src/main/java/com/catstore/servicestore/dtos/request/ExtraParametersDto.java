@@ -1,10 +1,15 @@
 package com.catstore.servicestore.dtos.request;
 
+import javax.validation.constraints.Min;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sun.istack.NotNull;
 
 public class ExtraParametersDto {
 
 	@JsonProperty("INSTALLMENTS_NUMBER")
+	@NotNull
+	@Min(1)
 	private Integer installmentsNumber;
 
 	/**

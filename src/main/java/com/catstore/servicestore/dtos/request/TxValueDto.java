@@ -1,7 +1,10 @@
 package com.catstore.servicestore.dtos.request;
 
+import com.sun.istack.NotNull;
+
 public class TxValueDto {
 
+	@NotNull
 	private Integer value;
 
 	private String currency;

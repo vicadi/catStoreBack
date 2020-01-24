@@ -1,11 +1,24 @@
 package com.catstore.servicestore.dtos.request;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+import com.sun.istack.NotNull;
+
 public class CreditCardDto {
 
+	@NotNull
+	@NotEmpty
+	@Size(min = 13, max = 20)
 	private String number;
 
+	@NotNull
+	@NotEmpty
+	@Size(min = 3, max = 4)
 	private String scurityCode;
 
+	@NotNull
+	@NotEmpty
 	private String expirationDate;
 
 	private String name;

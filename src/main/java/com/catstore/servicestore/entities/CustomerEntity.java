@@ -17,14 +17,14 @@ public class CustomerEntity {
 	@Column(name = "identification")
 	private String identification;
 	
-	@Column(name = "first_name")
-	private String firstName;
-	
-	@Column(name = "last_name")
-	private String lastName;
+	@Column(name = "full_name")
+	private String fullName;
 	
 	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "contact_phone")
+	private String contactPhone;
 	
 	@OneToMany(mappedBy = "identificationCustomer", cascade = CascadeType.ALL)
 	private List<TokenEntity> tokens;
@@ -40,38 +40,10 @@ public class CustomerEntity {
 	}
 
 	/**
-	 * @param identification the identification to set
+	 * @return the fullName
 	 */
-	public void setIdentification(String identification) {
-		this.identification = identification;
-	}
-
-	/**
-	 * @return the firstName
-	 */
-	public String getFirstName() {
-		return firstName;
-	}
-
-	/**
-	 * @param firstName the firstName to set
-	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	/**
-	 * @return the lastName
-	 */
-	public String getLastName() {
-		return lastName;
-	}
-
-	/**
-	 * @param lastName the lastName to set
-	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public String getFullName() {
+		return fullName;
 	}
 
 	/**
@@ -82,10 +54,10 @@ public class CustomerEntity {
 	}
 
 	/**
-	 * @param email the email to set
+	 * @return the contactPhone
 	 */
-	public void setEmail(String email) {
-		this.email = email;
+	public String getContactPhone() {
+		return contactPhone;
 	}
 
 	/**
@@ -96,17 +68,45 @@ public class CustomerEntity {
 	}
 
 	/**
-	 * @param tokens the tokens to set
-	 */
-	public void setTokens(List<TokenEntity> tokens) {
-		this.tokens = tokens;
-	}
-
-	/**
 	 * @return the purchases
 	 */
 	public List<PurchaseEntity> getPurchases() {
 		return purchases;
+	}
+
+	/**
+	 * @param identification the identification to set
+	 */
+	public void setIdentification(String identification) {
+		this.identification = identification;
+	}
+
+	/**
+	 * @param fullName the fullName to set
+	 */
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	/**
+	 * @param contactPhone the contactPhone to set
+	 */
+	public void setContactPhone(String contactPhone) {
+		this.contactPhone = contactPhone;
+	}
+
+	/**
+	 * @param tokens the tokens to set
+	 */
+	public void setTokens(List<TokenEntity> tokens) {
+		this.tokens = tokens;
 	}
 
 	/**

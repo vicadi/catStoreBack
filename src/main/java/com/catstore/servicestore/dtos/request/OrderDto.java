@@ -1,25 +1,26 @@
 package com.catstore.servicestore.dtos.request;
 
-public class OrderDto {
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 
-	private String id;
+import com.sun.istack.NotNull;
+
+public class OrderDto {
 
 	private String accountId;
 
+	@NotNull
+	@NotEmpty
 	private String referenceCode;
 
+	@NotNull
+	@NotEmpty
 	private String description;
 
 	private String language;
 
+	@Valid
 	private AdditionalValuesDto additionalValues;
-
-	/**
-	 * @return the id
-	 */
-	public String getId() {
-		return id;
-	}
 
 	/**
 	 * @return the accountId
@@ -57,17 +58,11 @@ public class OrderDto {
 	}
 
 	public static class Builder {
-		private String id;
 		private String accountId;
 		private String referenceCode;
 		private String description;
 		private String language;
 		private AdditionalValuesDto additionalValues;
-
-		public Builder id(String id) {
-			this.id = id;
-			return this;
-		}
 
 		public Builder accountId(String accountId) {
 			this.accountId = accountId;
@@ -96,7 +91,6 @@ public class OrderDto {
 
 		public OrderDto build() {
 			OrderDto orderDto = new OrderDto();
-			orderDto.id = id;
 			orderDto.accountId = accountId;
 			orderDto.referenceCode = referenceCode;
 			orderDto.description = description;

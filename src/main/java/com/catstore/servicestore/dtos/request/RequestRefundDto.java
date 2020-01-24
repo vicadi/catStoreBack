@@ -2,7 +2,7 @@ package com.catstore.servicestore.dtos.request;
 
 import javax.validation.Valid;
 
-public class RequestTxDto {
+public class RequestRefundDto {
 
 	private String language;
 
@@ -11,9 +11,7 @@ public class RequestTxDto {
 	private MerchantDto merchant;
 
 	@Valid
-	private TransactionDto transaction;
-
-	private Boolean test;
+	private TransactionRefundDto transaction;
 
 	/**
 	 * @return the language
@@ -39,23 +37,15 @@ public class RequestTxDto {
 	/**
 	 * @return the transaction
 	 */
-	public TransactionDto getTransaction() {
+	public TransactionRefundDto getTransaction() {
 		return transaction;
-	}
-
-	/**
-	 * @return the test
-	 */
-	public Boolean getTest() {
-		return test;
 	}
 
 	public static class Builder {
 		private String language;
 		private String command;
 		private MerchantDto merchant;
-		private TransactionDto transaction;
-		private Boolean test;
+		private TransactionRefundDto transaction;
 
 		public Builder language(String language) {
 			this.language = language;
@@ -72,24 +62,18 @@ public class RequestTxDto {
 			return this;
 		}
 
-		public Builder transaction(TransactionDto transaction) {
+		public Builder transaction(TransactionRefundDto transaction) {
 			this.transaction = transaction;
 			return this;
 		}
 
-		public Builder test(Boolean test) {
-			this.test = test;
-			return this;
-		}
-
-		public RequestTxDto build() {
-			RequestTxDto requestTxDto = new RequestTxDto();
-			requestTxDto.language = language;
-			requestTxDto.command = command;
-			requestTxDto.merchant = merchant;
-			requestTxDto.transaction = transaction;
-			requestTxDto.test = test;
-			return requestTxDto;
+		public RequestRefundDto build() {
+			RequestRefundDto requestRefundDto = new RequestRefundDto();
+			requestRefundDto.language = language;
+			requestRefundDto.command = command;
+			requestRefundDto.merchant = merchant;
+			requestRefundDto.transaction = transaction;
+			return requestRefundDto;
 		}
 	}
 

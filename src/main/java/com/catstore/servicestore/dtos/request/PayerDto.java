@@ -1,15 +1,27 @@
 package com.catstore.servicestore.dtos.request;
 
+import javax.validation.constraints.NotEmpty;
+
+import com.sun.istack.NotNull;
+
 public class PayerDto {
 
 	private String merchantPayerId;
 
+	@NotNull
+	@NotEmpty
 	private String fullName;
 
+	@NotNull
+	@NotEmpty
 	private String emailAddress;
 
+	@NotNull
+	@NotEmpty
 	private String contactPhone;
 
+	@NotNull
+	@NotEmpty
 	private String dniNumber;
 
 	/**

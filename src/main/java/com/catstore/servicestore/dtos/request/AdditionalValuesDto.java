@@ -1,10 +1,13 @@
 package com.catstore.servicestore.dtos.request;
 
+import javax.validation.Valid;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AdditionalValuesDto {
 
 	@JsonProperty("TX_VALUE")
+	@Valid
 	private TxValueDto txValue;
 
 	/**
