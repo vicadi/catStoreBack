@@ -1,0 +1,127 @@
+CREATE TABLE public.tbl_product (
+	id serial NOT NULL,
+	name_product varchar(100) NOT NULL,
+	description varchar(500) NOT NULL,
+	stock int NOT NULL DEFAULT 0,
+	value int NOT NULL DEFAULT 0,
+	name_image varchar(100) NULL,
+	CONSTRAINT tbl_product_pk PRIMARY KEY (id),
+	CONSTRAINT tbl_product_un UNIQUE (name_product)
+);
+
+
+
+
+
+CREATE TABLE public.tbl_customer (
+	identification varchar(50) NOT NULL,
+	first_name varchar(100) NOT NULL,
+	last_name varchar(100) NOT NULL,
+	email varchar(100) NULL
+);
+ALTER TABLE public.tbl_customer ADD CONSTRAINT tbl_customer_pk PRIMARY KEY (identification);
+ALTER TABLE public.tbl_customer RENAME COLUMN first_name TO full_name;
+ALTER TABLE public.tbl_customer ALTER COLUMN full_name TYPE varchar(300) USING full_name::varchar;
+ALTER TABLE public.tbl_customer DROP COLUMN last_name;
+ALTER TABLE public.tbl_customer ADD contact_phone varchar(100) NULL;
+
+
+
+
+
+CREATE TABLE public.tbl_token (
+	"token" varchar(40) NOT NULL,
+	identification_customer varchar(50) NOT NULL,
+	CONSTRAINT tbl_tokens_un UNIQUE ("token"),
+	CONSTRAINT tbl_tokens_fk FOREIGN KEY (identification_customer) REFERENCES public.tbl_customer(identification) ON DELETE CASCADE
+);
+ALTER TABLE public.tbl_token ADD CONSTRAINT tbl_token_pk PRIMARY KEY ("token");
+ALTER TABLE public.tbl_token ADD last_four_number varchar(4) NOT NULL;
+ALTER TABLE public.tbl_token ADD franchise varchar(100) NOT NULL;
+
+
+
+CREATE TABLE public.tbl_purchase (
+	id serial NOT NULL,
+	date_creation date NOT NULL,
+	date_modify date NULL,
+	transaction_id varchar(100) NOT NULL,
+	order_id varchar(100) NOT NULL,
+	identification_customer varchar(50) NOT NULL,
+	CONSTRAINT tbl_purchase_pk PRIMARY KEY (id),
+	CONSTRAINT tbl_purchase_fk FOREIGN KEY (identification_customer) REFERENCES public.tbl_customer(identification)
+);
+ALTER TABLE public.tbl_purchase ADD status varchar(100) NOT NULL;
+
+
+
+CREATE TABLE public.tbl_purchase_detail (
+	purchase_id int4 NOT NULL,
+	product_id int4 NOT NULL,
+	amount int NOT NULL,
+	quantify int NOT NULL,
+	CONSTRAINT tbl_purchase_detail_fk FOREIGN KEY (product_id) REFERENCES public.tbl_product(id) ON DELETE CASCADE,
+	CONSTRAINT tbl_purchase_detail_fk_1 FOREIGN KEY (purchase_id) REFERENCES public.tbl_purchase(id) ON DELETE CASCADE
+);
+
+ALTER TABLE public.tbl_purchase_detail ADD id serial NOT NULL;
+ALTER TABLE public.tbl_purchase_detail ADD CONSTRAINT tbl_purchase_detail_pk PRIMARY KEY (id);
+
+
+
+
+
+
+INSERT INTO public.tbl_product
+(name_product, description, stock, value, name_image)
+VALUES('Hamaca azul - 1 piso', 'Hamaca para gatos de un piso, color azul.', 30, 70000, 'hamacaAzul1p.jpg');
+
+INSERT INTO public.tbl_product
+(name_product, description, stock, value, name_image)
+VALUES('Hamaca gris - 1 piso', 'Hamaca para gatos de un piso, color gris.', 20, 70000, 'hamacaGris1p.jpg');
+
+INSERT INTO public.tbl_product
+(name_product, description, stock, value, name_image)
+VALUES('Hamaca verde - 2 pisos', 'Hamaca para gatos de dos pisos, color verde.', 60, 120000, 'hamacaVerde2p.jpg');
+
+INSERT INTO public.tbl_product
+(name_product, description, stock, value, name_image)
+VALUES('Arenero CatStore', 'Arenero con filtro interior y cubierta transparente.', 50, 50000, 'arenero.jpg');
+
+INSERT INTO public.tbl_product
+(name_product, description, stock, value, name_image)
+VALUES('Cama CatStore', 'Cama acolchada espuma rosada.', 30, 90000, 'cama.jpg');
+
+INSERT INTO public.tbl_product
+(name_product, description, stock, value, name_image)
+VALUES('Shampoo CatStore', 'Shampoo natural sin sal y sin quimicos que dañen la salud de tu gato.', 90, 110000, 'shampoo.jpg');
+
+INSERT INTO public.tbl_product
+(name_product, description, stock, value, name_image)
+VALUES('Dispensador de purina CatStore', 'Dispensador de purina automatico con bateria recargable.', 10, 300000, 'dispensadorPurina.jpg');
+
+INSERT INTO public.tbl_product
+(name_product, description, stock, value, name_image)
+VALUES('Dispensador de agua CatStore', 'Dispensador de agua automatico con bateria recargable.', 10, 150000, 'dispensadorAgua.jpg');
+
+INSERT INTO public.tbl_product
+(name_product, description, stock, value, name_image)
+VALUES('Aspiradora de pelos CatStore', 'Aspiradora para pelos de gato, sin ruido con bateria recargable.', 5, 280000, 'aspiradora.jpg');
+
+INSERT INTO public.tbl_product
+(name_product, description, stock, value, name_image)
+VALUES('Purina Gatitos 1Kg CatStore', 'Purina de productos naturales, vegetales seleccionados con salmon y pollo, para gatitos de hasta 1 año, 1kg.', 100, 30000, 'purinaGatitos1Kg.jpg');
+
+INSERT INTO public.tbl_product
+(name_product, description, stock, value, name_image)
+VALUES('Purina Gatitos 3Kg CatStore', 'Purina de productos naturales, vegetales seleccionados con salmon y pollo, para gatitos de hasta 1 año, 3kg.', 30, 85000, 'purinaGatitos3Kg.jpg');
+
+INSERT INTO public.tbl_product
+(name_product, description, stock, value, name_image)
+VALUES('Purina Adultos 1Kg CatStore', 'Purina de productos naturales, vegetales seleccionados con carne y pollo, para gatitos desde 1 año, 1kg.', 100, 25000, 'purinaAdultos1Kg.jpg');
+
+INSERT INTO public.tbl_product
+(name_product, description, stock, value, name_image)
+VALUES('Purina Adultos 3Kg CatStore', 'Purina de productos naturales, vegetales seleccionados con carne y pollo, para gatitos desde 1 año, 3kg.', 30, 70000, 'purinaAdultos3Kg.jpg');
+
+

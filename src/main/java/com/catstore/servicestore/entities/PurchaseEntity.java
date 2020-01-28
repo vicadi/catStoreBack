@@ -34,6 +34,9 @@ public class PurchaseEntity {
 	@Column(name = "order_id")
 	private String orderId;
 	
+	@Column(name = "status")
+	private String status;
+	
 	@ManyToOne
 	@JoinColumn
 	private CustomerEntity identificationCustomer;
@@ -137,6 +140,20 @@ public class PurchaseEntity {
 	 */
 	public void setPurchaseDetails(List<PurchaseDetailEntity> purchaseDetails) {
 		this.purchaseDetails = purchaseDetails;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public String getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

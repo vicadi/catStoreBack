@@ -2,13 +2,14 @@ package com.catstore.servicestore.services;
 
 import org.springframework.http.ResponseEntity;
 
-import com.catstore.servicestore.dtos.request.RequestDoPurchaseDto;
-import com.catstore.servicestore.dtos.response.ResponseDefaultDto;
+import com.catstore.servicestore.dtos.payment.RequestDoPurchase;
+import com.catstore.servicestore.dtos.payment.RequestDoReversion;
+import com.catstore.servicestore.dtos.payment.ResponsePayment;
 
 public interface PaymentService {
 	
-	ResponseEntity<ResponseDefaultDto> doPurchase(RequestDoPurchaseDto requestDoParchase);
+	ResponseEntity<ResponsePayment> doPurchase(RequestDoPurchase requestDoParchase);
 	
-	ResponseEntity<ResponseDefaultDto> doReversion(Integer idPurchase);
+	ResponseEntity<ResponsePayment> doReversion(RequestDoReversion requestReversion);
 
 }

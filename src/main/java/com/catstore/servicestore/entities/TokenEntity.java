@@ -18,6 +18,12 @@ public class TokenEntity {
 	@ManyToOne
 	@JoinColumn
 	private CustomerEntity identificationCustomer;
+	
+	@Column(name = "last_four_number")
+	private String lastFourNumber;
+	
+	@Column(name = "franchise")
+	private String franchise;
 
 	/**
 	 * @return the token
@@ -45,6 +51,34 @@ public class TokenEntity {
 	 */
 	public void setIdentificationCustomer(CustomerEntity identificationCustomer) {
 		this.identificationCustomer = identificationCustomer;
+	}
+
+	/**
+	 * @return the lastFourNumber
+	 */
+	public String getLastFourNumber() {
+		return lastFourNumber;
+	}
+
+	/**
+	 * @param lastFourNumber the lastFourNumber to set
+	 */
+	public void setLastFourNumber(String lastFourNumber) {
+		this.lastFourNumber = lastFourNumber;
+	}
+
+	/**
+	 * @return the franchise
+	 */
+	public String getFranchise() {
+		return franchise;
+	}
+
+	/**
+	 * @param franchise the franchise to set
+	 */
+	public void setFranchise(String franchise) {
+		this.franchise = franchise;
 	}
 	
 }

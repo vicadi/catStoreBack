@@ -1,16 +1,17 @@
 package com.catstore.servicestore.services;
 
-import com.catstore.servicestore.dtos.request.CreditCardTokenDto;
-import com.catstore.servicestore.dtos.request.RequestDoPurchaseDto;
-import com.catstore.servicestore.dtos.response.ResponseTokenDto;
-import com.catstore.servicestore.dtos.response.ResponseTxDto;
+import com.catstore.servicestore.dtos.payment.CreditCardData;
+import com.catstore.servicestore.dtos.payment.RequestDoPurchase;
+import com.catstore.servicestore.dtos.payment.RequestDoReversion;
+import com.catstore.servicestore.dtos.payment.ResponsePaymentProvider;
+import com.catstore.servicestore.dtos.payment.ResponseTokenProvider;
 
 public interface PaymentProvider {
 	
-	ResponseTxDto doPay(RequestDoPurchaseDto requestPay);
+	ResponsePaymentProvider doPay(RequestDoPurchase requestPay);
 	
-	ResponseTxDto revertpay(Integer idPurchase);
+	ResponsePaymentProvider revertpay(RequestDoReversion requestReversion);
 	
-	ResponseTokenDto generateToken(CreditCardTokenDto creditCardToken);
+	ResponseTokenProvider generateToken(CreditCardData creditCardData);
 
 }
