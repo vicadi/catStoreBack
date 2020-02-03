@@ -10,7 +10,7 @@ public class OrderPayment {
 
 	private String language;
 
-	private AdditionalValuesDto additionalValues;
+	private AdditionalValues additionalValues;
 
 	/**
 	 * @return the accountId
@@ -43,7 +43,7 @@ public class OrderPayment {
 	/**
 	 * @return the additionalValues
 	 */
-	public AdditionalValuesDto getAdditionalValues() {
+	public AdditionalValues getAdditionalValues() {
 		return additionalValues;
 	}
 
@@ -52,7 +52,7 @@ public class OrderPayment {
 		private String referenceCode;
 		private String description;
 		private String language;
-		private AdditionalValuesDto additionalValues;
+		private AdditionalValues additionalValues;
 
 		public Builder withAccountId(String accountId) {
 			this.accountId = accountId;
@@ -74,7 +74,7 @@ public class OrderPayment {
 			return this;
 		}
 
-		public Builder withAdditionalValues(AdditionalValuesDto additionalValues) {
+		public Builder withAdditionalValues(AdditionalValues additionalValues) {
 			this.additionalValues = additionalValues;
 			return this;
 		}

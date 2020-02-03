@@ -7,6 +7,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class RequestDoPurchase {
+	
+	@NotNull
+	private Boolean hasToken;
 
 	@NotNull
 	private Boolean tokenizedCreditCard;
@@ -24,8 +27,9 @@ public class RequestDoPurchase {
 	private Customer customerData;
 
 	@Valid
-	@NotNull
 	private CreditCardData creditCard;
+	
+	private String creditCardToken;
 
 	@NotNull
 	@NotEmpty
@@ -69,6 +73,20 @@ public class RequestDoPurchase {
 	 */
 	public CreditCardData getCreditCard() {
 		return creditCard;
+	}
+
+	/**
+	 * @return the hasToken
+	 */
+	public Boolean getHasToken() {
+		return hasToken;
+	}
+
+	/**
+	 * @return the creditCardToken
+	 */
+	public String getCreditCardToken() {
+		return creditCardToken;
 	}
 
 	/**
@@ -132,6 +150,20 @@ public class RequestDoPurchase {
 	 */
 	public void setListProducts(List<ProductDetail> listProducts) {
 		this.listProducts = listProducts;
+	}
+
+	/**
+	 * @param hasToken the hasToken to set
+	 */
+	public void setHasToken(Boolean hasToken) {
+		this.hasToken = hasToken;
+	}
+
+	/**
+	 * @param creditCardToken the creditCardToken to set
+	 */
+	public void setCreditCardToken(String creditCardToken) {
+		this.creditCardToken = creditCardToken;
 	}
 
 }

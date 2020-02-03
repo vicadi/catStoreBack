@@ -1,10 +1,13 @@
 package com.catstore.servicestore.dtos.payment;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
-import com.sun.istack.NotNull;
 
 public class RequestDoReversion {
+	
+	@NotNull
+	private Integer purchaseId;
 	
 	@NotNull
 	@NotEmpty
@@ -13,6 +16,13 @@ public class RequestDoReversion {
 	@NotNull
 	@NotEmpty
 	private String transactionId;
+
+	/**
+	 * @return the purchaseId
+	 */
+	public Integer getPurchaseId() {
+		return purchaseId;
+	}
 
 	/**
 	 * @return the orderId
@@ -26,6 +36,13 @@ public class RequestDoReversion {
 	 */
 	public String getTransactionId() {
 		return transactionId;
+	}
+
+	/**
+	 * @param purchaseId the purchaseId to set
+	 */
+	public void setPurchaseId(Integer purchaseId) {
+		this.purchaseId = purchaseId;
 	}
 
 	/**

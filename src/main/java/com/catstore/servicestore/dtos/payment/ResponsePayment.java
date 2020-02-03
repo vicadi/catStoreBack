@@ -2,14 +2,14 @@ package com.catstore.servicestore.dtos.payment;
 
 public class ResponsePayment {
 
-	private Integer status;
+	private String status;
 
 	private String description;
 
 	/**
 	 * @return the status
 	 */
-	public Integer getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
@@ -21,15 +21,15 @@ public class ResponsePayment {
 	}
 
 	public static class Builder {
-		private Integer status;
+		private String status;
 		private String description;
 
-		public Builder status(Integer status) {
+		public Builder withStatus(String status) {
 			this.status = status;
 			return this;
 		}
 
-		public Builder description(String description) {
+		public Builder withDescription(String description) {
 			this.description = description;
 			return this;
 		}

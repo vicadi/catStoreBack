@@ -2,7 +2,7 @@ package com.catstore.servicestore.dtos.payu;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class AdditionalValuesDto {
+public class AdditionalValues {
 
 	@JsonProperty("TX_VALUE")
 	private TxValue txValue;
@@ -22,8 +22,8 @@ public class AdditionalValuesDto {
 			return this;
 		}
 
-		public AdditionalValuesDto build() {
-			AdditionalValuesDto additionalValuesDto = new AdditionalValuesDto();
+		public AdditionalValues build() {
+			AdditionalValues additionalValuesDto = new AdditionalValues();
 			additionalValuesDto.txValue = txValue;
 			return additionalValuesDto;
 		}

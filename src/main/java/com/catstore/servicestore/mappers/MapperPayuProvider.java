@@ -12,7 +12,7 @@ import com.catstore.servicestore.dtos.payment.RequestDoPurchase;
 import com.catstore.servicestore.dtos.payment.RequestDoReversion;
 import com.catstore.servicestore.dtos.payment.ResponsePaymentProvider;
 import com.catstore.servicestore.dtos.payment.ResponseTokenProvider;
-import com.catstore.servicestore.dtos.payu.AdditionalValuesDto;
+import com.catstore.servicestore.dtos.payu.AdditionalValues;
 import com.catstore.servicestore.dtos.payu.CreditCardPayment;
 import com.catstore.servicestore.dtos.payu.CreditCardToken;
 import com.catstore.servicestore.dtos.payu.Merchant;
@@ -66,7 +66,7 @@ public class MapperPayuProvider {
 		return new OrderPayment.Builder().withAccountId(PayuConstants.ACCOUNT_ID)
 				.withReferenceCode(referenceCode).withDescription(description)
 				.withLanguage(PayuConstants.LANGUAGE)
-				.withAdditionalValues(new AdditionalValuesDto.Builder()
+				.withAdditionalValues(new AdditionalValues.Builder()
 						.withTxValue(new TxValue.Builder().withValue(getTotalValue(listProducts))
 								.withCurrency(PayuConstants.CURRENCY).build()).build())
 				.build();
